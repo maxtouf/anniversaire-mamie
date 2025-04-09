@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversaire de Mamie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Anniversaire de Mamie</h1>
+        <nav>
+            <button class="nav-btn active" data-target="guests"><i class="fas fa-users"></i> Invités</button>
+            <button class="nav-btn" data-target="todos"><i class="fas fa-tasks"></i> Todo</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section Liste des invités -->
+        <section id="guests" class="section active">
+            <div class="add-guest">
+                <h2><i class="fas fa-user-plus"></i> Ajouter un invité</h2>
+                <form id="guestForm">
+                    <input type="text" id="guestName" placeholder="Nom de l'invité" required>
+                    <select id="guestStatus">
+                        <option value="pending">En attente</option>
+                        <option value="confirmed">Confirmé</option>
+                        <option value="declined">Ne vient pas</option>
+                    </select>
+                    <button type="submit"><i class="fas fa-plus"></i> Ajouter</button>
+                </form>
+            </div>
+
+            <div class="guest-list">
+                <h2><i class="fas fa-list"></i> Liste des invités</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="confirmed">Confirmés</button>
+                    <button class="filter-btn" data-filter="pending">En attente</button>
+                    <button class="filter-btn" data-filter="declined">Ne vient pas</button>
+                </div>
+                <div id="guestsList"></div>
+            </div>
+        </section>
+
+        <!-- Section Todo List -->
+        <section id="todos" class="section">
+            <div class="add-todo">
+                <h2><i class="fas fa-plus-circle"></i> Ajouter une tâche</h2>
+                <form id="todoForm">
+                    <input type="text" id="todoTitle" placeholder="Titre de la tâche" required>
+                    <select id="todoPriority">
+                        <option value="low">Faible priorité</option>
+                        <option value="medium" selected>Priorité moyenne</option>
+                        <option value="high">Haute priorité</option>
+                    </select>
+                    <button type="submit"><i class="fas fa-plus"></i> Ajouter</button>
+                </form>
+            </div>
+            <div class="todo-list">
+                <h2><i class="fas fa-clipboard-list"></i> Liste des tâches</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Toutes</button>
+                    <button class="filter-btn" data-filter="pending">À faire</button>
+                    <button class="filter-btn" data-filter="completed">Terminées</button>
+                </div>
+                <div id="todosList"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="stats">
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <span id="totalGuests">0</span>
+                <label>Total</label>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-check-circle"></i>
+                <span id="confirmedGuests">0</span>
+                <label>Confirmés</label>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span id="pendingGuests">0</span>
+                <label>En attente</label>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-times-circle"></i>
+                <span id="declinedGuests">0</span>
+                <label>Refusés</label>
+            </div>
+        </div>
+        <div class="data-controls">
+            <button id="exportData" class="icon-btn" title="Exporter les données"><i class="fas fa-download"></i></button>
+            <button id="importData" class="icon-btn" title="Importer des données"><i class="fas fa-upload"></i></button>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
